@@ -19,4 +19,4 @@ class LabJackPID():
         
     def readVoltage(self,channel):
         voltage = self.lj.getAIN(channel)
-        print(voltage)
+        return voltage
