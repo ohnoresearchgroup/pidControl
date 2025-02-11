@@ -83,18 +83,19 @@ class VoltageLoggerApp:
         if not self.save_config():
             return
         
-
         self.acquisition_running = True
         self.start_button.config(state=tk.DISABLED)
         self.stop_button.config(state=tk.NORMAL)
+
+        # Open plot window
+        self.open_plot_window()
+
 
         # Start a new thread for acquisition
         self.acquisition_thread = threading.Thread(target=self.acquire_data)
         self.acquisition_thread.daemon = True
         self.acquisition_thread.start()
 
-        # Open plot window
-        self.open_plot_window()
 
     def stop_acquisition(self):
         """Stop the data acquisition process."""
